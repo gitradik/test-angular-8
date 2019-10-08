@@ -17,8 +17,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   sendProductName() {
-    const { productsService, productName } = this;
-    productsService.addProduct(productName);
+    this.productsService.addProduct(this.productName);
   }
 
   ngOnInit() {

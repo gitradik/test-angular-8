@@ -1,0 +1,7 @@
+<div class="product-form">
+  <input [(ngModel)]="productName"
+         (keyup)="onChangeProductName()"
+         type="text"
+         placeholder="Enter product name...">
+  <button (click)="sendProductName()" [disabled]="!isValid">Add product</button>
+</div>

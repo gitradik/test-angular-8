@@ -1,0 +1,22 @@
+<app-product-form></app-product-form>
+
+<div *ngIf="!isFetching; else fetchingProducts">
+  <div *ngIf="productsService.products.length; else noProducts" class="app-products">
+    <ul  *ngFor="let prod of productsService.products; let i = index">
+     <li [class.active]="prod.active">
+       <span>{{ i + 1 }}</span>
+       <span>{{ prod.name }}</span>
+       <span>{{ prod.cost }}</span>
+       <span>{{ prod.date | date:'medium' }}</span>
+       <input type="checkbox" [checked]="prod.active" (change)="onChange(prod.id)">
+       <button (click)="onClickRemove(prod.id)">x</button>
+     </li>
+    </ul>
+  </div>
+</div>
+
+<ng-template #fetchingProducts>Loading...</ng-template>
+
+<ng-template #noProducts>
+  <div style="width: 100%; text-align: center;">No products now!</div>
+</ng-template>

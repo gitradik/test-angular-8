@@ -40,12 +40,12 @@ export class ProductsService {
     products.push(newProd);
   }
 
-  onToggle(id: number) {
-    const prod = this.products.find(el => el.id === id);
+  onToggle(id: string) {
+    const prod = this.products.find(el => el.id.toString() === id);
     prod.active = !prod.active;
   }
 
-  onRemove(id: number) {
-    this.products = this.products.filter(el => el.id !== id);
+  onRemove(id: string) {
+    this.products = this.products.filter(el => el.id.toString() !== id);
   }
 }

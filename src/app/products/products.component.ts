@@ -12,13 +12,13 @@ export class ProductsComponent implements OnInit {
 
   private isFetching = true;
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService) {}
 
-  onChange(id: number) {
+  onChange(id: string) {
     this.productsService.onToggle(id);
   }
 
-  onClickRemove(id: number) {
+  onClickRemove(id: string) {
     this.productsService.onRemove(id);
   }
 

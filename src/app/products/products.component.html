@@ -8,6 +8,7 @@
        <span>{{ prod.name }}</span>
        <span>{{ prod.cost }}</span>
        <span>{{ prod.date | date:'medium' }}</span>
+       <button [routerLink]="['/product/', prod.id]" class="view-btn">view</button>
        <input type="checkbox" [checked]="prod.active" (change)="onChange(prod.id)">
        <button (click)="onClickRemove(prod.id)">x</button>
      </li>

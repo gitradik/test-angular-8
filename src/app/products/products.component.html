@@ -4,10 +4,13 @@
   <div *ngIf="productsService.products.length; else noProducts" class="app-products">
     <ul  *ngFor="let prod of productsService.products; let i = index">
      <li [class.active]="prod.active">
-       <span>{{ i + 1 }}</span>
-       <span>{{ prod.name }}</span>
-       <span>{{ prod.cost }}</span>
-       <span>{{ prod.date | date:'medium' }}</span>
+       <img [src]="['assets/', prod.imageUrl].join('')" [alt]="prod.name">
+       <div class="descr">
+         <span>{{ i + 1 }}</span>
+         <span>{{ prod.name }}</span>
+         <span>{{ prod.snippet }}</span>
+         <span>{{ prod.date | date:'medium' }}</span>
+       </div>
        <button [routerLink]="['/product/', prod.id]" class="view-btn">view</button>
        <input type="checkbox" [checked]="prod.active" (change)="onChange(prod.id)">
        <button (click)="onClickRemove(prod.id)">x</button>

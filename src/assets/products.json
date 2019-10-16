@@ -1,0 +1,155 @@
+[
+    {
+        "id": 0, 
+        "name": "motorola-xoom-with-wi-fi", 
+        "imageUrl": "img/phones/motorola-xoom-with-wi-fi.0.jpg",
+        "snippet": "The Next, Next Generation\r\n\r\nExperience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb).",
+      "active": false
+    },
+    {
+        "id": 1,
+        "name": "motorola-xoom",
+        "imageUrl": "img/phones/motorola-xoom.0.jpg",
+        "snippet": "The Next, Next Generation\n\nExperience the future with MOTOROLA XOOM, the world's first tablet powered by Android 3.0 (Honeycomb).",
+      "active": true
+    },
+    {
+        "id": 2,
+        "carrier": "AT&T",
+        "name": "motorola-atrix-4g",
+        "imageUrl": "img/phones/motorola-atrix-4g.0.jpg",
+        "snippet": "MOTOROLA ATRIX 4G the world's most powerful smartphone.",
+      "active": false
+    },
+    {
+        "id": 3,
+        "name": "dell-streak-7",
+        "imageUrl": "img/phones/dell-streak-7.0.jpg",
+        "snippet": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around.",
+      "active": false
+    },
+    {
+        "id": 4,
+        "carrier": "Cellular South",
+        "name": "samsung-gem",
+        "imageUrl": "img/phones/samsung-gem.0.jpg",
+        "snippet": "The Samsung Gem\u2122 brings you everything that you would expect and more from a touch display smart phone \u2013 more apps, more features and a more affordable price.",
+      "active": true
+    },
+    {
+        "id": 5,
+        "carrier": "Dell",
+        "name": "dell-venue",
+        "imageUrl": "img/phones/dell-venue.0.jpg",
+        "snippet": "The Dell Venue; Your Personal Express Lane to Everything",
+      "active": true
+    },
+    {
+        "id": 6,
+        "carrier": "Best Buy",
+        "name": "nexus-s",
+        "imageUrl": "img/phones/nexus-s.0.jpg",
+        "snippet": "Fast just got faster with Nexus S. A pure Google experience, Nexus S is the first phone to run Gingerbread (Android 2.3), the fastest version of Android yet.",
+      "active": true
+    },
+    {
+        "id": 7,
+        "carrier": "Cellular South",
+        "name": "lg-axis",
+        "imageUrl": "img/phones/lg-axis.0.jpg",
+        "snippet": "Android Powered, Google Maps Navigation, 5 Customizable Home Screens",
+      "active": true
+    },
+    {
+        "id": 8,
+        "name": "samsung-galaxy-tab",
+        "imageUrl": "img/phones/samsung-galaxy-tab.0.jpg",
+        "snippet": "Feel Free to Tab\u2122. The Samsung Galaxy Tab\u2122 brings you an ultra-mobile entertainment experience through its 7\u201d display, high-power processor and Adobe\u00ae Flash\u00ae Player compatibility.",
+      "active": true
+    },
+    {
+        "id": 9,
+        "carrier": "Cellular South",
+        "name": "samsung-showcase-a-galaxy-s-phone",
+        "imageUrl": "img/phones/samsung-showcase-a-galaxy-s-phone.0.jpg",
+        "snippet": "The Samsung Showcase\u2122 delivers a cinema quality experience like you\u2019ve never seen before. Its innovative 4\u201d touch display technology provides rich picture brilliance, even outdoors",
+      "active": true
+    },
+    {
+        "id": 10,
+        "carrier": "Verizon",
+        "name": "droid-2-global-by-motorola",
+        "imageUrl": "img/phones/droid-2-global-by-motorola.0.jpg",
+        "snippet": "The first smartphone with a 1.2 GHz processor and global capabilities.",
+      "active": true
+    },
+    {
+        "id": 11,
+        "carrier": "Verizon",
+        "name": "droid-pro-by-motorola",
+        "imageUrl": "img/phones/droid-pro-by-motorola.0.jpg",
+        "snippet": "The next generation of DOES.",
+      "active": true
+    },
+    {
+        "id": 12,
+        "carrier": "AT&T",
+        "name": "motorola-bravo-with-motoblur",
+        "imageUrl": "img/phones/motorola-bravo-with-motoblur.0.jpg",
+        "snippet": "An experience to cheer about.",
+      "active": true
+    },
+    {
+        "id": 13,
+        "carrier": "T-Mobile",
+        "name": "motorola-defy-with-motoblur",
+        "imageUrl": "img/phones/motorola-defy-with-motoblur.0.jpg",
+        "snippet": "Are you ready for everything life throws your way?",
+      "active": true
+    },
+    {
+        "id": 14,
+        "carrier": "T-Mobile",
+        "name": "t-mobile-mytouch-4g",
+        "imageUrl": "img/phones/t-mobile-mytouch-4g.0.jpg",
+        "snippet": "The T-Mobile myTouch 4G is a premium smartphone designed to deliver blazing fast 4G speeds so that you can video chat from practically anywhere, with or without Wi-Fi.",
+      "active": true
+    },
+    {
+        "id": 15,
+        "carrier": "US Cellular",
+        "name": "samsung-mesmerize-a-galaxy-s-phone",
+        "imageUrl": "img/phones/samsung-mesmerize-a-galaxy-s-phone.0.jpg",
+        "snippet": "The Samsung Mesmerize\u2122 delivers a cinema quality experience like you\u2019ve never seen before. Its innovative 4\u201d touch display technology provides rich picture brilliance,even outdoors",
+      "active": true
+    },
+    {
+        "id": 16,
+        "carrier": "Sprint",
+        "name": "sanyo-zio",
+        "imageUrl": "img/phones/sanyo-zio.0.jpg",
+        "snippet": "The Sanyo Zio by Kyocera is an Android smartphone with a combination of ultra-sleek styling, strong performance and unprecedented value.",
+      "active": true
+    },
+    {
+        "id": 17,
+        "name": "samsung-transform",
+        "imageUrl": "img/phones/samsung-transform.0.jpg",
+        "snippet": "The Samsung Transform\u2122 brings you a fun way to customize your Android powered touch screen phone to just the way you like it through your favorite themed \u201cSprint ID Service Pack\u201d.",
+      "active": true
+    },
+    {
+        "id": 18,
+        "name": "t-mobile-g2",
+        "imageUrl": "img/phones/t-mobile-g2.0.jpg",
+        "snippet": "The T-Mobile G2 with Google is the first smartphone built for 4G speeds on T-Mobile's new network. Get the information you need, faster than you ever thought possible.",
+      "active": false
+    },
+    {
+        "id": 19,
+        "name": "motorola-charm-with-motoblur",
+        "imageUrl": "img/phones/motorola-charm-with-motoblur.0.jpg",
+        "snippet": "Motorola CHARM fits easily in your pocket or palm.  Includes MOTOBLUR service.",
+      "active": true
+    }
+]

@@ -12,13 +12,14 @@ export class ProductsComponent implements OnInit {
 
   private isFetching = true;
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService) {
+  }
 
-  onChange(id: string) {
+  onChange(id: number) {
     this.productsService.onToggle(id);
   }
 
-  onClickRemove(id: string) {
+  onClickRemove(id: number) {
     this.productsService.onRemove(id);
   }
 
@@ -26,10 +27,9 @@ export class ProductsComponent implements OnInit {
     this.productsService.fetchProducts()
       .pipe(delay(500))
       .subscribe(() => {
-      this.isFetching = false;
-    });
+        this.isFetching = false;
+      });
   }
-
 }
 
 

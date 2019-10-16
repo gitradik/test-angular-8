@@ -2,6 +2,7 @@
 
   ul
     padding-left: 0
+    max-width: 700px
 
     li
       padding-right: 10px
@@ -11,13 +12,22 @@
       transition: .2s
       background-color: transparent
 
-      span
-        margin-right: 10px
+      img
+        height: auto
+        width: 100%
+        max-width: 100px
 
-        &:first-child
-          font-weight: 900
-          padding: 10px
-          background-color: rgba(black, .2)
+      .descr
+        display: flex
+        align-items: center
+
+        span
+          margin-right: 10px
+
+          &:first-child
+            font-weight: 900
+            padding: 10px
+            background-color: rgba(black, .2)
 
       input, .view-btn
         margin-right: 10px

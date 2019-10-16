@@ -1,0 +1,24 @@
+<div class="sign-up" *ngIf="!isFetching; else FetchAccount">
+  <div class="err" *ngIf="accountService.error">
+    <p>{{ accountService.error.message }}</p>
+  </div>
+  <input type="text"
+         placeholder="Email..."
+         [(ngModel)]="email"
+         (keyup)="onChange('email')"
+         (keydown.enter)="onSubmit()"
+  >
+  <input type="password"
+         placeholder="Password..."
+         [(ngModel)]="password"
+         (keyup)="onChange('password')"
+         (keydown.enter)="onSubmit()"
+  >
+  <button (click)="onSubmit()">submit</button>
+</div>
+
+<ng-template #FetchAccount>
+  <div class="loader">
+    <div>Loading...</div>
+  </div>
+</ng-template>

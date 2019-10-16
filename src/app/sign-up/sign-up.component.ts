@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AccountService} from '../Shared/account.service';
 import {delay} from 'rxjs/operators';
 import _ from 'lodash';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,7 @@ export class SignUpComponent implements OnInit {
   public password: string = '';
   public isFetching: boolean;
 
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService, private router: Router) {
   }
 
   onChange(type) {

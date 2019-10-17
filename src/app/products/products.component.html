@@ -1,13 +1,13 @@
-<app-product-form></app-product-form>
+<!--<app-product-form></app-product-form>-->
 
 <div *ngIf="!isFetching; else fetchingProducts">
   <div *ngIf="productsService.products.length; else noProducts" class="app-products">
     <ul cdkDropList (cdkDropListDropped)="drop($event)">
      <li class="li-item" *ngFor="let prod of productsService.products; let i = index" [class.active]="prod.active" cdkDrag>
-       <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+       <div class="li-item-placeholder" *cdkDragPlaceholder [class.li-item-placeholder-inactive]="!prod.active"></div>
        <img [src]="['assets/', prod.imageUrl].join('')" [alt]="prod.name">
        <div class="descr">
-         <span>{{ i + 1 }}</span>
+         <span>{{ prod.id }}</span>
          <span>{{ prod.name }}</span>
          <span>{{ prod.snippet }}</span>
          <span>{{ prod.date | date:'medium' }}</span>

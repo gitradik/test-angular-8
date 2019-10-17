@@ -11,10 +11,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-
-import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -31,8 +28,6 @@ import { MatSliderModule } from '@angular/material/slider';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
     DragDropModule
   ],
   providers: [],

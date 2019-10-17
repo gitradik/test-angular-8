@@ -5,6 +5,7 @@
     max-width: 900px
 
 .li-item
+  cursor: move
   position: relative
   border-radius: 4px
   padding: 10px
@@ -12,9 +13,10 @@
   align-items: center
   justify-content: flex-start
   //transition: .2s
-  background-color: transparent
+  background-color: white
   box-shadow: 0 0 15px 0 rgba(0,0,0,.15)
-  margin-bottom: 15px
+  font-size: 14px
+  margin-bottom: 5px
 
   &:last-child
     margin-bottom: 0
@@ -44,3 +46,16 @@
   //transition: .2s
   background-color: green
   color: white
+
+.li-item-placeholder
+  border: dotted 2px rgba(153, 153, 153, 0.62)
+  display: flex
+  border-radius: 4px
+  min-height: 120px
+  flex: 1
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1)
+  margin-bottom: 5px
+  background-color: #4d9a58
+
+.li-item-placeholder-inactive
+  background-color: rgba(0,0,0,.4)

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { ProductsService } from '../Shared/products.service';
 import { delay } from 'rxjs/operators';
+import Product from '../interfaces/product.interface';
 
 @Component({
   selector: 'app-products',
@@ -21,6 +23,10 @@ export class ProductsComponent implements OnInit {
 
   onClickRemove(id: number) {
     this.productsService.onRemove(id);
+  }
+
+  drop(event: CdkDragDrop<Product[]>) {
+    moveItemInArray(this.productsService.products, event.previousIndex, event.currentIndex);
   }
 
   ngOnInit() {

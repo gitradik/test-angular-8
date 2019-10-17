@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountService} from './Shared/account.service';
-import {delay} from 'rxjs/operators';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,19 +10,21 @@ export class AppComponent implements OnInit {
 
   public isFetching: boolean;
 
-  constructor(private accountService: AccountService, private router: Router) {
+  constructor(private accountService: AccountService) {
   }
 
   ngOnInit() {
     if (!this.accountService.account) {
       this.isFetching = true;
-      this.accountService.getAccount()
-        .pipe(delay(500))
-        .subscribe(() => {
-          this.isFetching = false;
-        }, () => {
-          this.isFetching = false;
-        });
+      const access = localStorage.getItem('access');
+      setTimeout(() => {
+        this.accountService.getAccount(access)
+          .subscribe(() => {
+            this.isFetching = false;
+          }, () => {
+            this.isFetching = false;
+          });
+      }, 0);
     }
   }
 }

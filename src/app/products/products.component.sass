@@ -1,43 +1,46 @@
 .app-products
 
   ul
-    padding-left: 0
-    max-width: 700px
+    padding: 30px
+    max-width: 900px
 
-    li
-      padding-right: 10px
-      display: flex
-      align-items: center
-      justify-content: flex-start
-      transition: .2s
-      background-color: transparent
+.li-item
+  position: relative
+  border-radius: 4px
+  padding: 10px
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  //transition: .2s
+  background-color: transparent
+  box-shadow: 0 0 15px 0 rgba(0,0,0,.15)
+  margin-bottom: 15px
 
-      img
-        height: auto
-        width: 100%
-        max-width: 100px
+  &:last-child
+    margin-bottom: 0
 
-      .descr
-        display: flex
-        align-items: center
+  img
+    height: auto
+    width: 100%
+    max-width: 100px
+    margin-right: 10px
 
-        span
-          margin-right: 10px
+  .descr
+    display: flex
+    align-items: center
 
-          &:first-child
-            font-weight: 900
-            padding: 10px
-            background-color: rgba(black, .2)
+    span
+      margin-right: 10px
 
-      input, .view-btn
-        margin-right: 10px
+      &:first-child
+        font-weight: 900
+        padding: 10px
+        background-color: rgba(black, .2)
 
-    .active
-      transition: .2s
-      background-color: green
+  input, .view-btn
+    margin-right: 10px
 
-      span
-
-        &:first-child
-          transition: .2s
-          color: white
+.li-item.active
+  //transition: .2s
+  background-color: green
+  color: white

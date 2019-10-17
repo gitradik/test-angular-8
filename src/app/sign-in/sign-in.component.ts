@@ -1,29 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import {AccountService} from '../Shared/account.service';
-import {delay} from 'rxjs/operators';
-import _ from 'lodash';
 import {Router} from '@angular/router';
+import _ from 'lodash';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.sass']
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.sass']
 })
-export class SignUpComponent implements OnInit {
+export class SignInComponent implements OnInit {
 
   public email: string = '';
   public password: string = '';
   public isFetching: boolean;
 
-  constructor(private accountService: AccountService, private router: Router) {
-  }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   onChange(type) {
     //console.log(this[type]);
   }
 
   onSubmit() {
-    const {email, password} = this;
+    const { email, password } = this;
 
     const result = [
       !_.isUndefined(email) && email !== '',
@@ -32,12 +30,11 @@ export class SignUpComponent implements OnInit {
 
     if (result) {
       this.isFetching = true;
-      this.accountService.createAccount({email, password})
-        .subscribe(() => {
-          this.isFetching = false;
-        }, () => {
-          this.isFetching = false;
-        });
+      this.accountService.login({ email, password })
+        .subscribe(
+          () => this.isFetching = false,
+          () => this.isFetching = false
+        );
     }
   }
 
@@ -46,4 +43,5 @@ export class SignUpComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
+
 }

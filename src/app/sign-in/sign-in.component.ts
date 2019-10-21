@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountService} from '../Shared/account.service';
+import {AccountService} from '../shared/account.service';
 import {Router} from '@angular/router';
 import _ from 'lodash';
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountService} from '../Shared/account.service';
+import {AccountService} from '../shared/account.service';
 import {delay} from 'rxjs/operators';
 import _ from 'lodash';
 import {Router} from '@angular/router';

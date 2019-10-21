@@ -1,1 +1,9 @@
-<p>product works!</p>
+<div *ngIf="product; else notFoundProd">
+  {{ JSON.stringify(product) }}
+</div>
+
+<ng-template #notFoundProd>
+  <div>
+    Not Found Prod
+  </div>
+</ng-template>

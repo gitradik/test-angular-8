@@ -6,7 +6,7 @@ import baseUrl from '../api/baseUrl';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AccountService {
 
   public account: Account = null;
@@ -22,8 +22,8 @@ export class AccountService {
     }
   }
 
-  createAccount({email, password}) {
-    return this.http.post<Account>(baseUrl + 'createAccount', {email, password})
+  createAccount({ email, password }) {
+    return this.http.post<Account>(baseUrl + 'createAccount', { email, password })
       .pipe(tap(acc => {
         this.account = acc;
         this.error = null;
@@ -35,8 +35,8 @@ export class AccountService {
       }));
   }
 
-  login({email, password}) {
-    return this.http.post<Account>(baseUrl + 'login', {email, password})
+  login({ email, password }) {
+    return this.http.post<Account>(baseUrl + 'login', { email, password })
       .pipe(tap(acc => {
         this.account = acc;
         this.error = null;
@@ -48,9 +48,9 @@ export class AccountService {
   }
 
   getAccount(access: string) {
-    const {url} = this.router;
+    const { url } = this.router;
     return this.http.get<Account>(baseUrl + 'getAccount', {
-      headers: {access_token: access}
+      headers: { access_token: access }
     })
       .pipe(tap(acc => {
         this.account = acc;

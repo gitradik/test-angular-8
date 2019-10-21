@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import { ProductsService } from '../Shared/products.service';
-import { delay } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { ProductsService } from '../shared/products.service';
 import Product from '../interfaces/product.interface';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -10,12 +10,13 @@ import Product from '../interfaces/product.interface';
   styleUrls: ['./products.component.sass'],
 })
 
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
 
   private isFetching = true;
+  private subscribes: Subscription[] = [];
+  private subProducts: Observable<Product[]> = this.productsService.fetchProducts();
 
-  constructor(private productsService: ProductsService) {
-  }
+  constructor(private productsService: ProductsService) {}
 
   onChange(id: number) {
     this.productsService.onToggle(id);
@@ -26,15 +27,25 @@ export class ProductsComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Product[]>) {
-    moveItemInArray(this.productsService.products, event.previousIndex, event.currentIndex);
+    const products = [ ...this.productsService.products.getValue() ];
+    moveItemInArray(products, event.previousIndex, event.currentIndex);
+    this.productsService.products.next(products);
+    this.subProducts.next(products);
   }
 
-  ngOnInit() {
-    this.productsService.fetchProducts()
-      .pipe(delay(500))
-      .subscribe(() => {
-        this.isFetching = false;
-      });
+  onChangeOrder(prods: Product[]) {
+    console.log('>>>>>>>>>>>>>>>>>>>>', prods);
+  }
+
+  ngOnInit(): void {
+    this.subscribes.push(
+      this.productsService.products.subscribe((prods) => this.onChangeOrder(prods) )
+    );
+    this.isFetching = false;
+  }
+
+  ngOnDestroy(): void {
+    this.subscribes.forEach(sub => sub.unsubscribe());
   }
 }
 

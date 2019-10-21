@@ -1,10 +1,10 @@
-<!--<app-product-form></app-product-form>-->
+<div *ngIf="!isFetching else fetchingProducts">
+  <div *ngIf="true; else noProducts" class="app-products">
 
-<div *ngIf="!isFetching; else fetchingProducts">
-  <div *ngIf="productsService.products.length; else noProducts" class="app-products">
-    <ul cdkDropList (cdkDropListDropped)="drop($event)">
-     <li class="li-item" *ngFor="let prod of productsService.products; let i = index" [class.active]="prod.active" cdkDrag>
-       <div class="li-item-placeholder" *cdkDragPlaceholder [class.li-item-placeholder-inactive]="!prod.active"></div>
+    <ul class="ul-list" cdkDropList (cdkDropListDropped)="drop($event)">
+      <li class="li-item" *ngFor="let prod of subProducts | async" [class.active]="prod.active" cdkDrag>
+      <div class="li-item-placeholder" *cdkDragPlaceholder [class.li-item-placeholder-inactive]="!prod.active"></div>
+       <img *cdkDragPreview [src]="['assets/', prod.imageUrl].join('')" [alt]="prod.name">
        <img [src]="['assets/', prod.imageUrl].join('')" [alt]="prod.name">
        <div class="descr">
          <span>{{ prod.id }}</span>
@@ -17,6 +17,7 @@
        <button (click)="onClickRemove(prod.id)">x</button>
      </li>
     </ul>
+
   </div>
 </div>
 

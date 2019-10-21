@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../Shared/products.service';
+import { ProductsService } from '../shared/products.service';
 
 @Component({
   selector: 'app-product-form',
@@ -17,7 +17,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   sendProductName() {
-    this.productsService.addProduct(this.productName);
+  //  this.productsService.addProduct(this.productName);
   }
 
   ngOnInit() {

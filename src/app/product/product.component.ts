@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { pluck } from 'rxjs/operators';
+import { ProductsService } from '../shared/products.service';
+import Product from '../interfaces/product.interface';
+
 
 @Component({
   selector: 'app-product',
@@ -8,11 +12,18 @@ import {Location} from '@angular/common';
 })
 export class ProductComponent implements OnInit {
 
-  location: Location;
+  private product: Product = null;
 
-  constructor(location: Location) { this.location = location; }
+  constructor(
+    private route: ActivatedRoute,
+    private productsService: ProductsService,
+  ) {}
 
   ngOnInit() {
-    const prodId = this.location.path().split('/')[2];
+    this.route.params
+      .pipe(pluck('prodId'))
+      .subscribe(prodId => {
+        console.log('>>>>>>>>>>>>>>>>>', prodId);
+      });
   }
 }

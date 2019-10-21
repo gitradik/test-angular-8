@@ -12,6 +12,10 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { JwPaginationComponent } from 'jw-angular-pagination';
+
+import { ProductsService } from './shared/products.service';
+import { AccountService } from './shared/account.service';
 
 @NgModule({
   declarations: [
@@ -22,15 +26,19 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ProductFormComponent,
     SignUpComponent,
     SignInComponent,
+    JwPaginationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
   ],
-  providers: [],
+  providers: [
+    ProductsService,
+    AccountService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

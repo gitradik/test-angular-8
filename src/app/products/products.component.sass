@@ -4,6 +4,9 @@
     padding: 30px
     max-width: 900px
 
+.ul-list
+  overflow: hidden
+
 .li-item
   cursor: move
   position: relative
@@ -59,3 +62,6 @@
 
 .li-item-placeholder-inactive
   background-color: rgba(0,0,0,.4)
+
+.ul-list.cdk-drop-list-dragging .li-item:not(.cdk-drag-placeholder)
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1)

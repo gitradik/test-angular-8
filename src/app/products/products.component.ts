@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ProductsService } from '../shared/products.service';
+import { Observable, Subject } from 'rxjs';
+import { share, takeUntil } from 'rxjs/operators';
 import Product from '../interfaces/product.interface';
-import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -13,8 +14,8 @@ import { Observable, Subscription } from 'rxjs';
 export class ProductsComponent implements OnInit, OnDestroy {
 
   private isFetching = true;
-  private subscribes: Subscription[] = [];
-  private subProducts: Observable<Product[]> = this.productsService.fetchProducts();
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
+  private products: Observable<Product[]> = this.productsService.fetchProducts().pipe(share());
 
   constructor(private productsService: ProductsService) {}
 
@@ -27,25 +28,27 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   drop(event: CdkDragDrop<Product[]>) {
-    const products = [ ...this.productsService.products.getValue() ];
-    moveItemInArray(products, event.previousIndex, event.currentIndex);
-    this.productsService.products.next(products);
-    this.subProducts.next(products);
+    const newProducts = [...this.productsService.getProducts().value];
+    moveItemInArray(newProducts, event.previousIndex, event.currentIndex);
+    this.products = this.productsService.setProducts(newProducts);
   }
 
   onChangeOrder(prods: Product[]) {
-    console.log('>>>>>>>>>>>>>>>>>>>>', prods);
+    console.log('change products', prods);
   }
 
-  ngOnInit(): void {
-    this.subscribes.push(
-      this.productsService.products.subscribe((prods) => this.onChangeOrder(prods) )
-    );
-    this.isFetching = false;
+  ngOnInit() {
+    this.productsService.getProducts()
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(prods => {
+        this.onChangeOrder(prods);
+      });
+    setTimeout(() => { this.isFetching = false; }, 0);
   }
 
   ngOnDestroy(): void {
-    this.subscribes.forEach(sub => sub.unsubscribe());
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }
 

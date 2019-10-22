@@ -6,7 +6,7 @@ import Product from '../interfaces/product.interface';
 
 @Injectable()
 export class ProductsService {
-  products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
+  private products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +15,12 @@ export class ProductsService {
       .pipe(tap(products => this.products.next(products)));
   }
 
-  getProducts(): Observable<Product[]> {
+  getProducts(): BehaviorSubject<Product[]> {
+    return this.products;
+  }
+
+  setProducts(products: Product[]) {
+    this.products.next(products);
     return this.products;
   }
 
@@ -25,6 +30,7 @@ export class ProductsService {
   }
 
   onRemove(id: number): void {
-    this.products.next(this.products.value.filter(el => el.id !== id));
+    const { products } = this;
+    products.next(products.value.filter(el => el.id !== id));
   }
 }

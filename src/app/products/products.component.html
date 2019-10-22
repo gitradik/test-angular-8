@@ -1,21 +1,27 @@
-<div *ngIf="!isFetching else fetchingProducts">
+<div *ngIf="!isFetching; else fetchingProducts">
   <div *ngIf="true; else noProducts" class="app-products">
 
     <ul class="ul-list" cdkDropList (cdkDropListDropped)="drop($event)">
-      <li class="li-item" *ngFor="let prod of subProducts | async" [class.active]="prod.active" cdkDrag>
+
+      <li class="li-item" *ngFor="let prod of products | async" [class.active]="prod.active" cdkDrag>
+
       <div class="li-item-placeholder" *cdkDragPlaceholder [class.li-item-placeholder-inactive]="!prod.active"></div>
+
        <img *cdkDragPreview [src]="['assets/', prod.imageUrl].join('')" [alt]="prod.name">
        <img [src]="['assets/', prod.imageUrl].join('')" [alt]="prod.name">
+
        <div class="descr">
          <span>{{ prod.id }}</span>
          <span>{{ prod.name }}</span>
          <span>{{ prod.snippet }}</span>
-         <span>{{ prod.date | date:'medium' }}</span>
+        <!-- <span>{{ prod.date | date:'medium' }}</span>-->
        </div>
+
        <button [routerLink]="['/product/', prod.id]" class="view-btn">view</button>
        <input type="checkbox" [checked]="prod.active" (change)="onChange(prod.id)">
        <button (click)="onClickRemove(prod.id)">x</button>
      </li>
+
     </ul>
 
   </div>

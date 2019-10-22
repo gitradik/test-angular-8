@@ -1,0 +1,12 @@
+<button #eventsBtn class="events-btn" (click)="onClickView()">Open events</button>
+
+<div #eventWrapper class="event-wrapper" [class.active]="isView">
+  <div class="app-events">
+    <div class="title">Product events on change order</div>
+    <div class="event" *ngFor="let ev of events | async">
+      <span>id: </span>{{ ev.id }} <br>
+      <span>name: </span> {{ ev.name }} <br>
+      <span>date event: </span> {{ ev.date }}
+    </div>
+  </div>
+</div>

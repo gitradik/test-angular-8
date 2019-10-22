@@ -33,9 +33,9 @@ export class ProductsService {
   pushEvent(id: number) {
     const prod = this.getProducts().value.find(el => el.id === id);
     if(prod) {
-      const evs = [...this.events.value];
-      evs.push({id: prod.id, name: prod.name, date: new Date()});
-      this.events.next(evs);
+      const events = [...this.events.value];
+      events.push({id: prod.id, name: prod.name, date: new Date()});
+      this.events.next(events);
     }
   }
 

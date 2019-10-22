@@ -16,6 +16,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
 
 import { ProductsService } from './shared/products.service';
 import { AccountService } from './shared/account.service';
+import { ProductEventsComponent } from './product-events/product-events.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AccountService } from './shared/account.service';
     SignUpComponent,
     SignInComponent,
     JwPaginationComponent,
+    ProductEventsComponent,
   ],
   imports: [
     BrowserModule,

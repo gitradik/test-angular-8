@@ -1,6 +1,4 @@
-<div *ngIf="!isFetching; else fetchingProducts" class="position-relative">
-
-  <button #eventsBtn class="events-btn" (click)="onToggleEvents()">Open events</button>
+<div *ngIf="!isFetching; else fetchingProducts">
   <div *ngIf="true; else noProducts" class="app-products">
     <ul class="ul-list" cdkDropList (cdkDropListDropped)="drop($event)">
       <li class="li-item" *ngFor="let prod of products | async" [class.active]="prod.active" cdkDrag>
@@ -18,17 +16,8 @@
        <button (click)="onClickRemove(prod.id)">x</button>
      </li>
     </ul>
-
-    <div #eventWrapper class="app-events" [class.active]="isOpenEvents">
-      <div class="title">Product order change events</div>
-      <div class="event" *ngFor="let ev of events | async">
-        <span>id:</span> {{ ev.id }}<br>
-        <span>name:</span> {{ ev.name }}<br>
-        <span>event date:</span> {{ ev.date }}
-      </div>
-    </div>
+    <app-product-events></app-product-events>
   </div>
-
 </div>
 
 <ng-template #fetchingProducts>Loading...</ng-template>

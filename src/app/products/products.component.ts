@@ -1,13 +1,7 @@
 import {
-  AfterViewChecked,
-  AfterViewInit,
   Component,
-  ElementRef,
-  EventEmitter,
-  HostListener,
   OnDestroy,
   OnInit,
-  Output,
   ViewChild
 } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -15,46 +9,24 @@ import { ProductsService } from '../shared/products.service';
 import { Observable, Subject } from 'rxjs';
 import { share, takeUntil } from 'rxjs/operators';
 import Product from '../interfaces/product.interface';
-import ProductEvent from "../interfaces/product-event.interface";
+import { ProductEventsComponent } from "../product-events/product-events.component";
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.sass'],
 })
-export class ProductsComponent implements OnInit, OnDestroy, AfterViewChecked {
+export class ProductsComponent implements OnInit, OnDestroy {
 
   private isFetching = true;
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   private products: Observable<Product[]> = this.productsService.fetchProducts().pipe(share());
-  private events: Observable<ProductEvent[]> = this.productsService.getEvents();
-  private isOpenEvents: boolean = false;
 
-  @ViewChild('eventWrapper', { static: false }) eventWrapper: ElementRef;
-  @ViewChild('eventsBtn', { static: false }) eventsBtn: ElementRef;
-
-  @Output()
-  public clickOutside = new EventEmitter();
+  @ViewChild(ProductEventsComponent, { static: false }) productEventsChild: ProductEventsComponent;
 
   constructor(
-    private productsService: ProductsService,
-    private elementRef: ElementRef,
+    private productsService: ProductsService
   ) {}
-
-
-  @HostListener('document:click', ['$event.target'])
-  public onClick(target) {
-    if (!this.eventWrapper.nativeElement.contains(target) && target !== this.eventsBtn.nativeElement) {
-      this.isOpenEvents = false;
-    }
-  }
-
-  ngAfterViewChecked() {
-  }
-
-  onToggleEvents() {
-    this.isOpenEvents = !this.isOpenEvents;
-  }
 
   onChange(id: number) {
     this.productsService.onToggle(id);

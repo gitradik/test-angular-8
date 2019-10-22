@@ -6,7 +6,7 @@
     <div class="event" *ngFor="let ev of events | async">
       <span>id: </span>{{ ev.id }} <br>
       <span>name: </span> {{ ev.name }} <br>
-      <span>date event: </span> {{ ev.date }}
+      <span>date event: </span> {{ ev.date | date:'medium' }}
     </div>
   </div>
 </div>

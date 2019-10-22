@@ -30,11 +30,19 @@ export class ProductsService {
     return this.products;
   }
 
-  pushEvent(id: number) {
-    const prod = this.getProducts().value.find(el => el.id === id);
-    if(prod) {
+  pushEvent(previousIndex: number, currentIndex: number) {
+    const previousProd = this.getProducts().value[previousIndex];
+    const currentProd = this.getProducts().value[currentIndex];
+    if(previousProd && currentProd) {
       const events = [...this.events.value];
-      events.push({id: prod.id, name: prod.name, date: new Date()});
+      events.push({
+        previous: {
+          id: previousProd.id, name: previousProd.name, date: new Date()
+        },
+        current: {
+          id: currentProd.id, name: currentProd.name, date: new Date()
+        }
+      });
       this.events.next(events);
     }
   }

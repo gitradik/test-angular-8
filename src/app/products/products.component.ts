@@ -40,7 +40,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     const newProducts = [...this.productsService.getProducts().value];
     moveItemInArray(newProducts, event.previousIndex, event.currentIndex);
     this.products = this.productsService.setProducts(newProducts);
-    this.productsService.pushEvent(event.previousIndex);
+    this.productsService.pushEvent(event.previousIndex, event.currentIndex);
   }
 
   onChangeOrder(prods: Product[]) {
